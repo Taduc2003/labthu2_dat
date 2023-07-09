@@ -16,12 +16,13 @@ if (!$conn) {
 // Xử lý khi giảng viên gửi lại lời nhắn
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     $student_id = $_POST["student_id"];
+    $feedback_id = $_POST["feedback_id"];
     $message = $_POST["message"];
 
     // Kiểm tra nếu có dữ liệu lời nhắn
     if (!empty($message)) {
         // Thực hiện truy vấn UPDATE để cập nhật lời nhắn cho sinh viên tương ứng
-        $sql = "UPDATE Students SET message = '$message' WHERE student_id = '$student_id'";
+        $sql = "UPDATE feedbacks SET message = '$message' WHERE student_id = '$student_id' AND id = '$feedback_id'";
 
         if (mysqli_query($conn, $sql)) {
             echo "Lời nhắn đã được gửi lại thành công.";
@@ -46,6 +47,9 @@ mysqli_close($conn);
     <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
         <label for="student_id">Mã sinh viên:</label>
         <input type="text" name="student_id" required><br>
+
+        <label for="feedback_id">Mã phản hồi:</label>
+        <input type="text" name="feedback_id" required><br>
 
         <label for="message">Nội dung lời nhắn:</label><br>
         <textarea name="message" rows="5" cols="40"></textarea><br>

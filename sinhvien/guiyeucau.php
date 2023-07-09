@@ -15,14 +15,13 @@ if (!$conn) {
 // Xử lý khi sinh viên gửi yêu cầu
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     $student_id = $_POST["student_id"];
-    $student_name = $_POST["student_name"];
     $request_content = $_POST["request_content"];
 
     // Kiểm tra nếu có dữ liệu yêu cầu
     if (!empty($request_content)) {
         // Thực hiện truy vấn INSERT để lưu yêu cầu vào cơ sở dữ liệu
-        $sql = "INSERT INTO feedbacks (student_id, student_name, content)
-                VALUES ('$student_id', '$student_name', '$request_content')";
+        $sql = "INSERT INTO feedbacks (student_id, content)
+                VALUES ('$student_id', '$request_content')";
 
         if (mysqli_query($conn, $sql)) {
             echo "Yêu cầu đã được gửi thành công.";
@@ -47,9 +46,6 @@ mysqli_close($conn);
     <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
         <label for="student_id">Mã sinh viên:</label>
         <input type="text" name="student_id" required><br>
-
-        <label for="student_name">Tên sinh viên:</label>
-        <input type="text" name="student_name" required><br>
 
         <label for="request_content">Nội dung yêu cầu:</label><br>
         <textarea name="request_content" rows="5" cols="40"></textarea><br>

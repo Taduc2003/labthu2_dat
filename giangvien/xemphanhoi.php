@@ -33,7 +33,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "<h2>Danh sách phản hồi từ sinh viên:</h2>";
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<p><strong>Mã sinh viên:</strong> " . $row["student_id"] . "</p>";
-        echo "<p><strong>Tên sinh viên:</strong> " . $row["student_name"] . "</p>";
+        echo "<p><strong>Mã phản hồi :</strong> " . $row["id"] . "</p>";
         echo "<p><strong>Nội dung phản hồi:</strong> " . $row["content"] . "</p>";
         
         // Kiểm tra trạng thái của phản hồi
@@ -56,3 +56,20 @@ if (mysqli_num_rows($result) > 0) {
 
 mysqli_close($conn);
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>trang giang vien</title>
+</head>
+<body>
+    <!-- Nút "Back" -->
+    <button onclick="goBack()">Back</button>
+
+    <!-- Script JavaScript -->
+    <script>
+        function goBack() {
+            window.location.href = "luachongv.php";
+        }
+    </script>
+</body>
+</html>
