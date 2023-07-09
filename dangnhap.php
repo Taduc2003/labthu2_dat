@@ -39,5 +39,5 @@
                echo "sai ten dang nhap hoac mat khau";
            }
            
-           
+           mysqli_close($conn);      
 ?>

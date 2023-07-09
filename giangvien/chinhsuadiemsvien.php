@@ -30,6 +30,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
         echo "Lỗi: " . mysqli_error($conn);
     }
 }
+if (isset($_POST["Back"])) {
+    // Chuyển hướng người dùng đến trang dangnhap.php
+    header('Location: luachongv.php');
+    exit();
+}
 
 mysqli_close($conn);
 ?>
@@ -52,6 +57,16 @@ mysqli_close($conn);
         <input type="text" name="new_score5" required><br>
 
         <input type="submit" name="submit" value="Cập Nhật Điểm">
+        
+        <!-- Nút "Back" -->
+        <button onclick="goBack()">Back</button>
+
+        <!-- Script JavaScript -->
+        <script>
+            function goBack() {
+                window.location.href = "luachongv.php";
+            }
+        </script>
     </form>
 </body>
 </html>

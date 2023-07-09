@@ -26,7 +26,21 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     echo "No student found with the provided student ID.";
 }
-
-
-
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>trang sinh viên</title>
+</head>
+<body>
+    <!-- Nút "Back" -->
+    <button onclick="goBack()">Back</button>
+
+    <!-- Script JavaScript -->
+    <script>
+        function goBack() {
+            window.location.href = "luachon.php";
+        }
+    </script>
+</body>
+</html>

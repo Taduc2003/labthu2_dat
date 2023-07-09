@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
         } else {
             echo "Lỗi: " . mysqli_error($conn);
         }
-    } else {
+    }else {
         echo "Vui lòng nhập nội dung lời nhắn.";
     }
 }
@@ -51,6 +51,16 @@ mysqli_close($conn);
         <textarea name="message" rows="5" cols="40"></textarea><br>
 
         <input type="submit" name="submit" value="Gửi lại lời nhắn">
+
+        <!-- Nút "Back" -->
+        <button onclick="goBack()">Back</button>
+
+        <!-- Script JavaScript -->
+        <script>
+            function goBack() {
+                window.location.href = "luachongv.php";
+            }
+        </script>
     </form>
 </body>
 </html>

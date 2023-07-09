@@ -38,5 +38,14 @@ mysqli_close($conn);
 <head>
 </head>
 <body>
+    <!-- Nút "Back" -->
+    <button onclick="goBack()">Back</button>
+
+<!-- Script JavaScript -->
+<script>
+    function goBack() {
+        window.location.href = "luachon.php";
+    }
+</script>
 </body>
 </html>

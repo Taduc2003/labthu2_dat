@@ -55,6 +55,16 @@ mysqli_close($conn);
         <textarea name="request_content" rows="5" cols="40"></textarea><br>
 
         <input type="submit" name="submit" value="Gửi Yêu Cầu">
+
+        <!-- Nút "Back" -->
+        <button onclick="goBack()">Back</button>
+
+        <!-- Script JavaScript -->
+        <script>
+            function goBack() {
+                window.location.href = "luachon.php";
+            }
+        </script>
     </form>
 </body>
 </html>

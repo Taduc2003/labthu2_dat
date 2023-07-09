@@ -92,6 +92,16 @@ mysqli_close($conn);
         <input type="text" name="student_address"><br>
 
         <input type="submit" name="submit" value="Lưu Thay Đổi">
+
+       <!-- Nút "Back" -->
+       <button onclick="goBack()">Back</button>
+
+<!-- Script JavaScript -->
+<script>
+    function goBack() {
+        window.location.href = "luachongv.php";
+    }
+</script>
     </form>
 </body>
 </html>

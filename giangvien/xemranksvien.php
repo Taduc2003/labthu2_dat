@@ -62,6 +62,17 @@ mysqli_close($conn);
         <input type="text" name="exam_id" required><br>
 
         <input type="submit" name="submit" value="Xem Xếp Hạng">
+
+        <!-- Nút "Back" -->
+        <button onclick="goBack()">Back</button>
+
+        <!-- Script JavaScript -->
+        <script>
+            function goBack() {
+                window.location.href = "luachongv.php";
+            }
+        </script>
+
     </form>
 </body>
 </html>
