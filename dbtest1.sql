@@ -44,7 +44,7 @@ INSERT INTO Exams (exam_id,exam_name,exam_date) VALUES
 (2,'Physics','2021-7-3'),
 (3,'Chemistry','2021-7-3'),
 (4,'English','2021-7-1'),
-(5,'Viterature','2021-7-1');
+(5,'Literature','2021-7-1');
 
 INSERT INTO Students (student_id, student_name, student_email, student_date_of_birth, student_gender, student_address,student_password)
 VALUES
