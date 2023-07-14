@@ -215,3 +215,5 @@ SET block_name = CASE
                   WHEN student_id = 10 THEN 'D01'
 				        END
 WHERE student_id IN(2,3,4,5,6,7,8,9,10);
+
+ALTER TABLE Major_Student ADD major_level INT CHECK(major_level IN (1,2,3,4,5));

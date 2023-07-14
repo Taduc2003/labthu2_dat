@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
 
     // Kiểm tra kết quả
     if (mysqli_num_rows($result_student) > 0) {
-        // Hiển thị thông tin sinh viên
+        //Hiển thị thông tin sinh viên
         $row_student = mysqli_fetch_assoc($result_student);
         echo "Mã sinh viên: " . $row_student['student_id'] . "<br>";
         echo "Họ tên: " . $row_student['student_name'] . "<br>";
@@ -30,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
         echo "Ngày sinh: " . $row_student['student_date_of_birth'] . "<br>";
         echo "Giới tính: " . $row_student['student_gender'] . "<br>";
         echo "Địa chỉ: " . $row_student['student_address'] . "<br>";
+        echo "Khối thi: " . $row_student['block_name'] . "<br>";
 
         // Thực hiện truy vấn SELECT để lấy điểm số môn học của sinh viên
         $sql_results = "SELECT exams.exam_name, results.result_score
@@ -44,7 +45,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
             while ($row_results = mysqli_fetch_assoc($result_results)) {
                 echo "Môn học: " . $row_results['exam_name'] . ", Điểm số: " . $row_results['result_score'] . "<br>";
             }
-        } else {
+
+            $sql_major = "  SELECT m.major_name, ms.major_level FROM major m
+                            INNER JOIN major_student ms ON m.major_id = ms.major_id
+                            WHERE student_id = '$student_id'";
+            $result_major = mysqli_query($conn, $sql_major);
+            if (mysqli_num_rows($result_major) > 0) {
+                // Hiển thị tên môn kèm điểm số
+                while ($row_major = mysqli_fetch_assoc($result_major)) {
+                    echo "Level: " . $row_major['major_level'] . ", Ngành: " . $row_major['major_name'] . "<br>";
+                }
+            }else {echo "Chưa đăng ký nguyện vọng nào.";}
+
+        } 
+        else {
             echo "Không có thông tin điểm số môn học của sinh viên này.";
         }
     } else {

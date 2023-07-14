@@ -11,6 +11,8 @@
             xemthongtin<br>
             <input type="radio" name="luachonsvien" value="xemdiem">
             xemdiem<br>
+            <input type="radio" name="luachonsvien" value="diemchuannamtrc">
+            diemchuannamtrc<br>
             <input type="radio" name="luachonsvien" value="guiyeucau">
             guiyeucau<br>
             <input type="radio" name="luachonsvien" value="phanhoicuagiangvien">
@@ -44,13 +46,11 @@
                 $_SESSION['user_id'] = $user_id1;
                 header('Location:phanhoicuagiangvien.php');
                 }
-                if (isset($_POST["logout"])) {
-                    // Xóa tất cả các session
-                    session_unset();
-                    session_destroy();
-                
-                    // Chuyển hướng người dùng đến trang dangnhap.php
-                    header('Location: dangnhap.php');
+                else if($luachon=="diemchuannamtrc"){
+                    session_start();
+                    $_SESSION['user_id'] = $user_id1;
+                    header('Location:diemNamtrc.php');
+                    }
                     if (isset($_POST["logout"])) {
                         // Xóa tất cả các session
                         session_unset();
@@ -58,9 +58,16 @@
                     
                         // Chuyển hướng người dùng đến trang dangnhap.php
                         header('Location: dangnhap.php');
-                        exit();
+                        if (isset($_POST["logout"])) {
+                            // Xóa tất cả các session
+                            session_unset();
+                            session_destroy();
+                        
+                            // Chuyển hướng người dùng đến trang dangnhap.php
+                            header('Location: dangnhap.php');
+                            exit();
+                        }
                     }
-                }
                         
     
 ?>

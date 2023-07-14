@@ -22,11 +22,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
             INNER JOIN Results ON Students.student_id = Results.result_student_id
             WHERE Results.result_exam_id = '$exam_id'
             ORDER BY Results.result_score DESC";
-
+    $exname = "SELECT exam_name FROM Exams WHERE exam_id = '$exam_id' ";
     $result = mysqli_query($conn, $sql);
-
+    $result1 = mysqli_query($conn, $exname);
+   
     if (mysqli_num_rows($result) > 0) {
-        echo "<h2>Xếp Hạng Sinh Viên</h2>";
+        while ($row = mysqli_fetch_assoc($result1)) {
+            $exam_name = $row["exam_name"];
+            echo "<h2>Xếp Hạng Theo $exam_name </h2>"; 
+        }
         echo "<table>";
         echo "<tr><th>STT</th><th>Mã Sinh Viên</th><th>Tên Sinh Viên</th><th>Điểm Số</th></tr>";
 
