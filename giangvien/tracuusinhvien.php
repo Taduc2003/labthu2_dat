@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
                 echo "Môn học: " . $row_results['exam_name'] . ", Điểm số: " . $row_results['result_score'] . "<br>";
             }
 
-            $sql_major = "  SELECT m.major_name, ms.major_level FROM major m
+            $sql_major = "  SELECT m.major_name, ms.major_level FROM majors m
                             INNER JOIN major_student ms ON m.major_id = ms.major_id
                             WHERE student_id = '$student_id'";
             $result_major = mysqli_query($conn, $sql_major);
