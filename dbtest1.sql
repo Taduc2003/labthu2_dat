@@ -112,8 +112,93 @@ VALUES
 (49, 10, 4, 6.2),
 (50, 10, 5, 8.25);
 
+CREATE TABLE Blocks (
+    block_id INT PRIMARY KEY,
+    block_name VARCHAR(10)
+);
 
+CREATE TABLE Majors (
+    major_id INT PRIMARY KEY,
+    major_name VARCHAR(100)
+);
 
+CREATE TABLE Cutoff_Scores (
+    major_id INT,
+    block_id INT,
+    cutoff_score FLOAT,
+    PRIMARY KEY (major_id, block_id, Year),
+    FOREIGN KEY (major_id) REFERENCES Majors(major_id),
+    FOREIGN KEY (block_id) REFERENCES Blocks(block_id)
+);
 
+CREATE TABLE Exam_Block (
+    block_id INT,
+    exam_id INT,
+    PRIMARY KEY (block_id, exam_id),
+    FOREIGN KEY (block_id) REFERENCES Blocks(block_id),
+    FOREIGN KEY (exam_id) REFERENCES Exams(exam_id)
+);
+
+ALTER TABLE Students ADD block_name VARCHAR(10)
+
+EXEC sp_rename 'Exam_Block_Subjects', 'Exam_Block';
+
+CREATE TABLE Major_Student(
+	student_id INT,
+	major_id INT,
+	PRIMARY KEY( student_id,major_id),
+	FOREIGN KEY (student_id) REFERENCES Students(student_id),
+  FOREIGN KEY (major_id) REFERENCES Majors(major_id)
+);
+
+INSERT INTO Majors (major_id,major_name)
+VALUES
+(1,'Software Engineering'),
+(2,'Data Science'),
+(3,'Environmental technology'),
+(4,'Chemical engineering'),
+(5,'Safety Information'),
+(6,'Printing technique'),
+(7,'Business administration'),
+(8,'Hotel management');
+
+INSERT INTO Blocks (block_id,block_name)
+VALUES
+(1, A00),
+(2, A01),
+(3, D01),
+(4, D07);
+
+INSERT INTO Exam_Block (block_id,exam_id)
+VALUES
+(1,1),
+(1,2),
+(1,3),
+(2,1),
+(2,2),
+(2,4),
+(3,1),
+(3,4),
+(3,5),
+(4,1),
+(4,3),
+(4,4);
+
+INSERT INTO Cutoff_Scores (major_id,block_id,cutoff_score)
+VALUES
+(1,1,29.30),
+(1,2,28.80),
+(2,1,28.00),
+(2,2,28.5),
+(3,1,25.00),
+(3,2,25.25),
+(4,1,25.45),
+(4,3,25.75),
+(5,1,27.80),
+(5,2,28.00),
+(6,1,24.50),
+(6,3,24.9),
+(7,4,23.00),
+(8,4,23.55);
 
 
