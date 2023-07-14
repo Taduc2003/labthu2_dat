@@ -126,7 +126,7 @@ CREATE TABLE Cutoff_Scores (
     major_id INT,
     block_id INT,
     cutoff_score FLOAT,
-    PRIMARY KEY (major_id, block_id, Year),
+    PRIMARY KEY (major_id, block_id),
     FOREIGN KEY (major_id) REFERENCES Majors(major_id),
     FOREIGN KEY (block_id) REFERENCES Blocks(block_id)
 );
