@@ -164,10 +164,10 @@ VALUES
 
 INSERT INTO Blocks (block_id,block_name)
 VALUES
-(1, A00),
-(2, A01),
-(3, D01),
-(4, D07);
+(1, 'A00'),
+(2, 'A01'),
+(3, 'D01'),
+(4, 'D07');
 
 INSERT INTO Exam_Block (block_id,exam_id)
 VALUES
