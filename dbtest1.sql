@@ -203,6 +203,7 @@ VALUES
 
 UPDATE Students
 SET block_name = CASE
+                  WHEN student_id = 1 THEN 'A01'
                   WHEN student_id = 2 THEN 'A01'
 				          WHEN student_id = 3 THEN 'A00'
 			            WHEN student_id = 4 THEN 'D07'
