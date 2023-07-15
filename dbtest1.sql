@@ -201,19 +201,12 @@ VALUES
 (7,4,23.00),
 (8,4,23.55);
 
-UPDATE Students
-SET block_name = CASE
-                  WHEN student_id = 1 THEN 'A01'
-                  WHEN student_id = 2 THEN 'A01'
-				          WHEN student_id = 3 THEN 'A00'
-			            WHEN student_id = 4 THEN 'D07'
-                  WHEN student_id = 5 THEN 'A01'
-				          WHEN student_id = 6 THEN 'A00'
-                  WHEN student_id = 7 THEN 'A01'
-				          WHEN student_id = 8 THEN 'D01'
-			            WHEN student_id = 9 THEN 'D07'
-                  WHEN student_id = 10 THEN 'D01'
-				        END
-WHERE student_id IN(2,3,4,5,6,7,8,9,10);
-
 ALTER TABLE Major_Student ADD major_level INT CHECK(major_level IN (1,2,3,4,5));
+alter table Students drop block_name;
+CREATE TABLE student_blocks (
+    student_id INT,
+    block_id INT,
+    PRIMARY KEY (student_id, block_id),
+    FOREIGN KEY (student_id) REFERENCES Students(student_id),
+    FOREIGN KEY (block_id) REFERENCES Blocks(block_id)
+);

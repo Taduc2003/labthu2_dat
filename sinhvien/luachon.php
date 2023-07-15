@@ -17,6 +17,14 @@
             guiyeucau<br>
             <input type="radio" name="luachonsvien" value="phanhoicuagiangvien">
             phanhoicuagiangvien<br>
+            <input type="radio" name="luachonsvien" value="dangkykhoi">
+            dangkykhoi<br>
+            <input type="radio" name="luachonsvien" value="luachonnganh">
+            luachonnganh<br>
+            <input type="radio" name="luachonsvien" value="xoanganh">
+            xoanganh<br>
+            <input type="radio" name="luachonsvien" value="xepnguyenvong">
+            xepnguyenvong<br>
             <input type="submit" name="confirm" value="confirm">
             <input type="submit" name="logout" value="Log Out">
           </form>
@@ -51,6 +59,26 @@
                     $_SESSION['user_id'] = $user_id1;
                     header('Location:diemNamtrc.php');
                     }
+                    else if($luachon=="dangkykhoi"){
+                        session_start();
+                        $_SESSION['user_id'] = $user_id1;
+                        header('Location:dangkykhoi.php');
+                        }
+                        else if($luachon=="luachonnganh"){
+                            session_start();
+                            $_SESSION['user_id'] = $user_id1;
+                            header('Location:luachonnganh.php');
+                            }
+                            else if($luachon=="xoanganh"){
+                                session_start();
+                                $_SESSION['user_id'] = $user_id1;
+                                header('Location:xoanganh.php');
+                                } 
+                                else if($luachon=="xepnguyenvong"){
+                                    session_start();
+                                    $_SESSION['user_id'] = $user_id1;
+                                    header('Location:xepnguyenvong.php');
+                                    }
                     if (isset($_POST["logout"])) {
                         // Xóa tất cả các session
                         session_unset();

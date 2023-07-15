@@ -30,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
         echo "Ngày sinh: " . $row_student['student_date_of_birth'] . "<br>";
         echo "Giới tính: " . $row_student['student_gender'] . "<br>";
         echo "Địa chỉ: " . $row_student['student_address'] . "<br>";
-        echo "Khối thi: " . $row_student['block_name'] . "<br>";
 
         // Thực hiện truy vấn SELECT để lấy điểm số môn học của sinh viên
         $sql_results = "SELECT exams.exam_name, results.result_score
@@ -48,7 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
 
             $sql_major = "  SELECT m.major_name, ms.major_level FROM majors m
                             INNER JOIN major_student ms ON m.major_id = ms.major_id
-                            WHERE student_id = '$student_id'";
+                            WHERE student_id = '$student_id'
+                            ORDER BY ms.major_level ASC";
             $result_major = mysqli_query($conn, $sql_major);
             if (mysqli_num_rows($result_major) > 0) {
                 // Hiển thị tên môn kèm điểm số
