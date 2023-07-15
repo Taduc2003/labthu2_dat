@@ -31,8 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
 
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result1)) {
-            $block_name = $row["exam_name"];
-            echo "<h2>Xếp Hạng Theo $block_name </h2>"; 
+            $block_name = $row["block_name"];
+            echo "<h2>Xếp Hạng Theo Khối $block_name </h2>"; 
         }
         echo "<table>";
         echo "<tr><th>STT</th><th>Mã Sinh Viên</th><th>Tên Sinh Viên</th><th>Tổng Điểm</th></tr>";
